@@ -1,0 +1,8 @@
+<%= simple_form_for(@listing) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :rating %>
+  <%= f.input :cuisine %>
+  <%= f.input :images, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>

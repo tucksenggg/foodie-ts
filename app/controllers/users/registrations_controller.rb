@@ -19,15 +19,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    super
+    # @user = User.create
+    UserMailer.welcome_email(@user).deliver_later if @user.save
+  end
+
   private
 
   def google_oauth?(user)
     user.provider == 'google_oauth2'
   end
   # POST /resource
-  # def create
-  #   super
-  # end
+
 
   # GET /resource/edit
   # def edit
